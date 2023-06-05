@@ -14,15 +14,24 @@ const Form = ({ titleForm }: Forms) => {
           <input
             type="email"
             placeholder="Email"
-            className="form-email mb-5 rounded-md"
+            className="form-email mb-5 rounded-md w-full"
           />
           <input
             type="password"
             placeholder="Password"
-            className="form-password mb-5 rounded-md"
+            className="form-password mb-5 rounded-md w-full"
           />
-          <input type="checkbox" name="" id="check" className="form-checkbox" />
-          <p className="inline-block ml-3 font-light">Forget your password?</p>
+          <div>
+            <input
+              type="checkbox"
+              name=""
+              id="check"
+              className="form-checkbox"
+            />
+            <p className="inline-block ml-3 font-light">
+              Forget your password?
+            </p>
+          </div>
           <Button />
         </form>
       </div>

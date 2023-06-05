@@ -1,4 +1,5 @@
 import { Form } from "../form/Form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -6,9 +7,9 @@ const Login = () => {
       <Form titleForm="Login" />
       <div className="flex w-1/2 gap-[21px]">
         <p className="font-light">Don't an account?</p>
-        <a href="/register" className="font-bold text-[#CAC61E]">
+        <Link to="/register" className="font-bold text-[#CAC61E]">
           Register
-        </a>
+        </Link>
       </div>
     </>
   );
