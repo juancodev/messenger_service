@@ -1,10 +1,16 @@
-import React from "react";
+import { Form } from "../form/Form";
 
 const Login = () => {
   return (
-    <div>
-      <h2>Login</h2>
-    </div>
+    <>
+      <Form titleForm="Login" />
+      <div className="flex w-1/2 gap-[21px]">
+        <p className="font-light">Don't an account?</p>
+        <a href="/register" className="font-bold text-[#CAC61E]">
+          Register
+        </a>
+      </div>
+    </>
   );
 };
 
