@@ -2,10 +2,6 @@ import React from "react";
 import logo from "../assets/oha_logo.svg";
 import imageOha from "../assets/Image.png";
 
-type FormComponents = {
-  children?: JSX.Element[] | JSX.Element;
-};
-
 const Layout = ({ children }: FormComponents): JSX.Element => {
   return (
     <>

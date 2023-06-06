@@ -1,9 +1,16 @@
 import React from "react";
 
-const Button = () => {
+type ButtonProps = {
+  submit?: (e: any) => object | void;
+};
+
+const Button = ({ submit }: ButtonProps) => {
   return (
     <>
-      <button className="block mt-5 py-4 bg-sky-700 w-full rounded-md font-semibold text-xl text-white">
+      <button
+        onClick={submit}
+        className="block mt-5 py-4 bg-sky-700 w-full rounded-md font-semibold text-xl text-white"
+      >
         Sing in
       </button>
     </>
