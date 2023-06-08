@@ -1,6 +1,7 @@
 import logo from "../assets/oha_logo.svg";
 import imageOha from "../assets/Image.png";
 import { useAuth } from "../auth/AuthContext";
+import { UserProfile } from "../components/userprofile/UserProfile";
 
 const Layout = ({ children }: FormComponents): JSX.Element => {
   const auth = useAuth();
@@ -8,7 +9,7 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
   if (auth.user?.isAuthenticated) {
     return (
       <>
-        <h1>Prueba del usuario</h1>
+        <UserProfile />
       </>
     );
   } else {
