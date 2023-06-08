@@ -1,32 +1,51 @@
 import React from "react";
 
 type Users = {
-  email: string;
-  password: string;
-  token: string;
-  fullName: string;
+  user: object | string;
+  register: (userInformation: object) => void;
+  login: (userInformation: object) => void;
 };
 
 const AuthContext = React.createContext({});
 
 const AuthProvider = ({ children }: FormComponents): JSX.Element => {
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState({
+    email: "",
+    password: "",
+    token: "",
+    fullName: "",
+  });
 
-  const login = ({ email, password, token }: Users) => {
-    setUser({ email, password, token });
+  const login = (user: any) => {
+    return setUser({
+      ...user,
+      email: user.email,
+      password: user.password,
+      token: user.token,
+      fullName: user.fullName,
+    });
   };
 
-  const logout = () => {
-    setUser({});
+  const register = (user: any) => {
+    return setUser({
+      ...user,
+      fullName: user.fullName,
+      email: user.email,
+      password: user.password,
+    });
   };
 
-  const register = ({ fullName, email, password }: Users) => {
-    setUser({ fullName, email, password });
-  };
-
-  const auth = { user, login, logout, register };
+  const auth: Users = { user, login, register };
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 
-export { AuthContext, AuthProvider };
+const useAuth = (): any => {
+  const userAuth = React.useContext(AuthContext);
+  if (!userAuth) {
+    throw new Error("useAuth must be used within a AuthProvider");
+  }
+  return userAuth;
+};
+
+export { AuthContext, AuthProvider, useAuth };
