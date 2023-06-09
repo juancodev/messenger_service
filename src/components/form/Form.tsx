@@ -49,25 +49,15 @@ const Form = (props: FormsParams) => {
     return data;
   };
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const auth = useAuth();
 
-  // useEffect(() => {
-  //   // if (auth) {
-  //   //   // auth.register(formValue);
-  //   //   // console.log(auth.user);
-  //   // }
-  // }, []);
-
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
-    if (auth) {
-      auth?.register(formValue);
-    }
-    console.log(auth);
+    auth?.register(formValue);
     // createUser(true);
-    // navigate("/");
+    navigate("/");
   };
 
   if (props.userCredential === false) {

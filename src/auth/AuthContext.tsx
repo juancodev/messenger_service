@@ -42,9 +42,6 @@ const AuthProvider = ({ children }: FormComponents): JSX.Element => {
 
 const useAuth = (): any => {
   const userAuth = React.useContext(AuthContext);
-  if (!userAuth) {
-    throw new Error("useAuth must be used within a AuthProvider");
-  }
   return userAuth;
 };
 

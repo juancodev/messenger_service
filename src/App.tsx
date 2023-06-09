@@ -4,7 +4,7 @@ import { Login } from "./components/login/Login";
 import { Register } from "./components/register/Register";
 import { AuthProvider } from "./auth/AuthContext";
 import { UserProfile } from "./components/userprofile/UserProfile";
-// import { AuthRouter } from "./auth/AuthRouter";
+import { AuthRouter } from "./auth/AuthRouter";
 
 function App() {
   return (
@@ -12,9 +12,16 @@ function App() {
       <AuthProvider>
         <Layout>
           <Routes>
+            <Route
+              path="/"
+              element={
+                <AuthRouter>
+                  <UserProfile />
+                </AuthRouter>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<UserProfile />} />
           </Routes>
         </Layout>
       </AuthProvider>

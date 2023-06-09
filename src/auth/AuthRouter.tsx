@@ -1,15 +1,13 @@
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../auth/AuthContext";
+import { Navigate } from "react-router-dom";
 
 const AuthRouter = ({ children }: FormComponents) => {
   const authUser = useAuth();
 
-  switch (authUser) {
-    case {}:
-      console.log("there is not user");
-      break;
+  if (authUser.user.email === "") {
+    return <Navigate to="/login" replace={true} />;
   }
-
-  return children;
+  return <>{children}</>;
 };
 
 export { AuthRouter };
