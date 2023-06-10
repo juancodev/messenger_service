@@ -15,24 +15,28 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
   } else {
     return (
       <>
-        <div className="max-w-full h-full py-20 px-24 bg-[#5F636785]">
-          <div className="h-full grid grid-cols-2 bg-white rounded-3xl">
+        <div className="max-w-full max-h-full max-sm:px-9 max-sm:py-14 py-20 px-24 bg-[#5F636785]">
+          <div className="max-h-full grid grid-cols-2 max-sm:grid-cols-1 max-sm:grid-rows-1 bg-white rounded-3xl">
             <div className="container-logo">
-              <div className="logo">
+              <div className="max-sm:hidden">
                 <img className="pt-8 pl-7" src={logo} />
               </div>
-              <div className="title text-center mt-7">
-                <h3 className="text-3xl font-bold">
+              <div className="text-center mt-7">
+                <h3 className="text-3xl max-sm:text-sm font-bold">
                   Welcome a <span className="text-[#7FBCE9]">Oha App</span>
                 </h3>
               </div>
               <div className="flex flex-col items-center">{children}</div>
             </div>
-            <div className="container-img">
-              <img src={imageOha} alt="" />
+            <div className="container-img max-sm:w-full max-sm:h-1/2">
+              <img
+                src={imageOha}
+                alt="Image"
+                className="max-sm:h-full max-sm:w-full max-sm:object-cover"
+              />
             </div>
           </div>
-          <p className="absolute bottom-[12%] right-[52%] font-light text-base">
+          <p className="absolute max-sm:hidden bottom-[12%] right-[52%] font-light text-base">
             Terms & conditions
           </p>
         </div>
