@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../button/Button";
 import { useAuth } from "../../auth/AuthContext";
@@ -45,8 +45,8 @@ const Form = (props: FormsParams) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
-    return data;
+    console.log(data?.token);
+    return data?.token;
   };
 
   const navigate = useNavigate();
@@ -55,9 +55,25 @@ const Form = (props: FormsParams) => {
 
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
-    auth?.register(formValue);
-    // createUser(true);
-    navigate("/");
+    if (props.userCredential === false) {
+      try {
+        createUser(true).then((response) => {
+          auth?.register(formValue, response);
+          const myToken = response;
+          localStorage.setItem("token", myToken);
+          navigate("/");
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      if (localStorage.getItem("token") !== "") {
+        auth?.login(formValue, localStorage.getItem("token"));
+        navigate("/");
+      } else {
+        alert("User not logged in.");
+      }
+    }
   };
 
   if (props.userCredential === false) {
@@ -121,16 +137,29 @@ const Form = (props: FormsParams) => {
       <>
         <div className="w-1/2 mt-2.5">
           <h2 className="text-5xl mb-7 font-normal">{props.titleForm}</h2>
-          <form className="mb-5">
+          <form className="mb-5" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"
               className="form-email mb-5 rounded-md w-full"
+              onChange={(e) =>
+                setFormValue({
+                  ...formValue,
+                  email: e.target.value,
+                })
+              }
             />
             <input
               type="password"
               placeholder="Password"
               className="form-password mb-5 rounded-md w-full"
+              onChange={(e) =>
+                setFormValue({
+                  ...formValue,
+                  password: e.target.value,
+                  isAuthenticated: true,
+                })
+              }
             />
             <div>
               <input

@@ -1,77 +1,35 @@
+import { useEffect, useState } from "react";
 import logo from "../../assets/oha_logo.svg";
 import contactIcon from "../../assets/contact.svg";
 import logoMessage from "../../assets/fondo-message.png";
-
-const randomId = Math.floor(Math.random() * 1000 + 1);
-
-const contacts = [
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-  {
-    id: randomId,
-    name: "Jane Cooper",
-    email: "jane@email.com",
-    time: "12:08pm",
-    newMessage: 1,
-    image: contactIcon,
-  },
-];
+import { useAuth } from "../../auth/AuthContext";
+const API = "https://api.chat.oha.services";
+const VERSION = "api/v1";
 
 const UserProfile = () => {
+  const [contact, setContact] = useState([]);
+
+  const auth = useAuth();
+  const { user } = auth;
+
+  const options = {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
+
+  const getUsers = async () => {
+    const response = await fetch(`${API}/${VERSION}/users/`, options);
+    const data = await response.json();
+    return data.results;
+  };
+
+  useEffect(() => {
+    getUsers().then((response) => {
+      setContact(response);
+    });
+  }, []);
+
   return (
     <>
       <div className="absolute bg-[url('src/assets/fondo-oha.png')]">
@@ -98,29 +56,29 @@ const UserProfile = () => {
                 </p>
               </div>
               <div className="contacts mt-3.5 flex flex-col">
-                {contacts.map((contact) => (
+                {contact.map((contacts: any) => (
                   <>
                     <div className="flex justify-between">
                       <div className="flex gap-3">
                         <div className="image-chat">
-                          <img src={contact.image} alt="" />
+                          <img src={contactIcon} alt="" />
                         </div>
-                        <div className="name-email">
+                        <div key={contacts.uuid} className="name-email">
                           <div className="name font-bold text-lg">
-                            <p>{contact.name}</p>
+                            <p>{contacts.first_name}</p>
                           </div>
                           <div className="email font-bold text-[11px] text-[#737373]">
-                            <p>{contact.email}</p>
+                            <p>{contacts.email}</p>
                           </div>
                         </div>
                       </div>
                       <div className="time-new-message">
                         <div className="time text-xs">
-                          <p>{contact.time}</p>
+                          <p>{contacts.updated_at.slice(11, -16)}pm</p>
                         </div>
                         <div className="new-Message text-end font-bold text-white text-xs">
                           <p className="bg-cyan-700 rounded-full inline-block p-1 mt-1">
-                            {contact.newMessage}
+                            {/* {contact.newMessage} */}1
                           </p>
                         </div>
                       </div>
@@ -134,7 +92,7 @@ const UserProfile = () => {
           <section className="messages col-start-2 col-end-4 bg-white">
             {/* Component Message*/}
             <div className="w-full h-full flex justify-center items-center">
-              <div className="flex flex-col justify-center items-center gap-9 w-4/6 h-4/6 bg-[rgba(0,120,167,0.24)] rounded-full">
+              <div className="flex flex-col justify-center items-center gap-9 w-3/5 h-3/6 bg-[rgba(0,120,167,0.24)] rounded-full">
                 <div className="image-bg-message">
                   <img src={logoMessage} alt="" />
                 </div>

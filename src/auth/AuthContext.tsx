@@ -2,8 +2,8 @@ import React from "react";
 
 type Users = {
   user: object | string;
-  register: (userInformation: object) => void;
-  login: (userInformation: object) => void;
+  register: (userInformation: object, tokenUser: string) => void;
+  login: (userInformation: object, tokenUser: string) => void;
 };
 
 const AuthContext = React.createContext({});
@@ -16,22 +16,22 @@ const AuthProvider = ({ children }: FormComponents): JSX.Element => {
     fullName: "",
   });
 
-  const login = (user: any) => {
+  const login = (user: any, token: string) => {
     return setUser({
       ...user,
       email: user.email,
       password: user.password,
-      token: user.token,
-      fullName: user.fullName,
+      token: token,
     });
   };
 
-  const register = (user: any) => {
+  const register = (user: any, token: string) => {
     return setUser({
       ...user,
       fullName: user.fullName,
       email: user.email,
       password: user.password,
+      token: token,
     });
   };
 

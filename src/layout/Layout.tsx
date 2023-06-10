@@ -6,7 +6,7 @@ import { UserProfile } from "../components/userprofile/UserProfile";
 const Layout = ({ children }: FormComponents): JSX.Element => {
   const auth = useAuth();
 
-  if (auth.user?.isAuthenticated) {
+  if (auth.user?.token !== "") {
     return (
       <>
         <UserProfile />
