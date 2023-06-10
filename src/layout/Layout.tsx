@@ -32,7 +32,7 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
               <img
                 src={imageOha}
                 alt="Image"
-                className="max-sm:h-full max-sm:w-full max-sm:object-cover"
+                className="max-sm:h-full max-sm:w-full max-sm:object-cover xl:w-full"
               />
             </div>
           </div>
