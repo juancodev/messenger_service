@@ -79,8 +79,10 @@ const Form = (props: FormsParams) => {
   if (props.userCredential === false) {
     return (
       <>
-        <div className="w-1/2 mt-2.5">
-          <h2 className="text-5xl mb-7 font-normal">{props.titleForm}</h2>
+        <div className="w-1/2 mt-2.5 max-sm:w-full max-sm:px-5">
+          <h2 className="text-5xl max-sm:text-2xl mb-7 font-normal">
+            {props.titleForm}
+          </h2>
           <form className="mb-5" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -135,8 +137,10 @@ const Form = (props: FormsParams) => {
   } else {
     return (
       <>
-        <div className="w-1/2 mt-2.5">
-          <h2 className="text-5xl mb-7 font-normal">{props.titleForm}</h2>
+        <div className="w-1/2 mt-2.5 max-sm:w-full max-sm:px-5">
+          <h2 className="text-5xl max-sm:text-2xl mb-7 font-normal">
+            {props.titleForm}
+          </h2>
           <form className="mb-5" onSubmit={handleSubmit}>
             <input
               type="email"
@@ -166,10 +170,10 @@ const Form = (props: FormsParams) => {
                 type="checkbox"
                 name=""
                 id="check"
-                className="form-checkbox"
+                className="form-checkbox max-sm:hidden"
               />
-              <p className="inline-block ml-3 font-light">
-                Forget your password?
+              <p className="inline-block ml-3 font-light max-sm:w-full max-sm:m-0 max-sm:text-lg max-sm:text-center">
+                ¿Olvidaste tu contraseña?
               </p>
             </div>
             <Button />

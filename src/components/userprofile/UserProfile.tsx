@@ -32,12 +32,12 @@ const UserProfile = () => {
 
   return (
     <>
-      <div className="absolute bg-[url('src/assets/fondo-oha.png')]">
-        <div className="mt-5 ml-5">
+      <div className="md:absolute bg-[url('src/assets/fondo-oha.png')] max-sm:max-w-full max-sm:block">
+        <div className="mt-5 ml-5 max-sm:my-5">
           <img src={logo} alt="Logo" />
         </div>
-        <div className="mt-5 mx-[75px] grid grid-cols-3">
-          <section className="list-contact bg-[#F2F2F2] rounded-2xl">
+        <div className="mt-5 mx-[75px] grid grid-cols-3 max-sm:grid-cols-1 max-sm:m-0">
+          <section className="list-contact bg-[#F2F2F2] rounded-2xl max-sm:w-full max-sm:shadow-[0_1px_2px_5px_rgba(0,0,0,0.2)]">
             <div className="flex flex-col">
               <div className="border-[1px] border-cyan-600 w-1/4 self-center mt-8"></div>
               <div className="image-chat flex mt-[15px] mr-5 mb-[26px] ml-4 p-2.5">
@@ -49,13 +49,13 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div className="container-list-contact mx-5 bg-white p-2.5 shadow-[inset_0px_2px_5px_rgba(0,0,0,0.4)]">
-              <div className="text-cyan-700 font-bold text-lg">
-                <p className="border-b-2 border-cyan-600 inline-block">
+            <div className="container-list-contact mx-5 bg-white p-2.5 shadow-[inset_0px_2px_5px_rgba(0,0,0,0.4)] max-sm:p-0">
+              <div className="text-cyan-700 font-bold text-lg max-sm:ml-11">
+                <p className="border-b-2 border-cyan-600 inline-block max-sm:pt-5">
                   En Línea
                 </p>
               </div>
-              <div className="contacts mt-3.5 flex flex-col">
+              <div className="contacts mt-3.5 flex flex-col max-sm:pr-16">
                 {contact.map((contacts: any) => (
                   <>
                     <div className="flex justify-between">
@@ -89,7 +89,7 @@ const UserProfile = () => {
               </div>
             </div>
           </section>
-          <section className="messages col-start-2 col-end-4 bg-white">
+          <section className="messages col-start-2 col-end-4 bg-white max-sm:hidden">
             {/* Component Message*/}
             <div className="w-full h-full flex justify-center items-center">
               <div className="flex flex-col justify-center items-center gap-9 w-3/5 h-3/6 bg-[rgba(0,120,167,0.24)] rounded-full">

@@ -21,9 +21,9 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
               <div className="max-sm:hidden">
                 <img className="pt-8 pl-7" src={logo} />
               </div>
-              <div className="text-center mt-7">
+              <div className="text-center mt-7 max-sm:text-start max-sm:ml-5 max-sm:mb-5">
                 <h3 className="text-3xl max-sm:text-sm font-bold">
-                  Welcome a <span className="text-[#7FBCE9]">Oha App</span>
+                  Bienvenido a <span className="text-[#7FBCE9]">Oha App</span>
                 </h3>
               </div>
               <div className="flex flex-col items-center">{children}</div>
