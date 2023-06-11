@@ -9,7 +9,7 @@ const VERSION = "api/v1";
 const UserProfile = () => {
   const [contact, setContact] = useState([]);
   const [chatContact, setChatContact] = useState<boolean>(false);
-  const [nameContact, setNameContact] = useState<string>("");
+  const [nameContact, setNameContact] = useState<object>({});
 
   const auth = useAuth();
   const { user } = auth;
@@ -64,7 +64,10 @@ const UserProfile = () => {
                       className="flex justify-between hover:cursor-pointer"
                       onClick={() => {
                         setChatContact(true);
-                        setNameContact(contacts.first_name);
+                        setNameContact({
+                          name: contacts?.first_name,
+                          id: contacts?.uuid,
+                        });
                       }}
                     >
                       <div className="flex gap-3">

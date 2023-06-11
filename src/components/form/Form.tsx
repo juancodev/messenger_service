@@ -45,7 +45,6 @@ const Form = (props: FormsParams) => {
       }),
     });
     const data = await response.json();
-    console.log(data?.token);
     return data?.token;
   };
 
