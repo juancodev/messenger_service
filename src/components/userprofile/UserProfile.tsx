@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/oha_logo.svg";
 import contactIcon from "../../assets/contact.svg";
-import logoMessage from "../../assets/fondo-message.png";
 import { useAuth } from "../../auth/AuthContext";
+import { ContactChat } from "../contactchat/ContactChat";
 const API = "https://api.chat.oha.services";
 const VERSION = "api/v1";
 
 const UserProfile = () => {
   const [contact, setContact] = useState([]);
+  const [chatContact, setChatContact] = useState<boolean>(false);
+  const [nameContact, setNameContact] = useState<string>("");
 
   const auth = useAuth();
   const { user } = auth;
@@ -37,7 +39,7 @@ const UserProfile = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="mt-5 mx-[75px] grid grid-cols-3 max-sm:grid-cols-1 max-sm:m-0">
-          <section className="list-contact bg-[#F2F2F2] rounded-2xl max-sm:w-full max-sm:shadow-[0_1px_2px_5px_rgba(0,0,0,0.2)]">
+          <section className="bg-[#F2F2F2] rounded-2xl max-sm:w-full max-sm:shadow-[0_1px_2px_5px_rgba(0,0,0,0.2)]">
             <div className="flex flex-col">
               <div className="border-[1px] border-cyan-600 w-1/4 self-center mt-8"></div>
               <div className="image-chat flex mt-[15px] mr-5 mb-[26px] ml-4 p-2.5">
@@ -58,7 +60,13 @@ const UserProfile = () => {
               <div className="contacts mt-3.5 flex flex-col max-sm:pr-16">
                 {contact.map((contacts: any) => (
                   <>
-                    <div className="flex justify-between">
+                    <div
+                      className="flex justify-between hover:cursor-pointer"
+                      onClick={() => {
+                        setChatContact(true);
+                        setNameContact(contacts.first_name);
+                      }}
+                    >
                       <div className="flex gap-3">
                         <div className="image-chat">
                           <img src={contactIcon} alt="" />
@@ -91,22 +99,7 @@ const UserProfile = () => {
           </section>
           <section className="messages col-start-2 col-end-4 bg-white max-sm:hidden">
             {/* Component Message*/}
-            <div className="w-full h-full flex justify-center items-center">
-              <div className="flex flex-col justify-center items-center gap-9 w-3/5 h-3/6 bg-[rgba(0,120,167,0.24)] rounded-full">
-                <div className="image-bg-message">
-                  <img src={logoMessage} alt="" />
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="font-bold text-4xl">
-                    <p>¡Bienvenido!</p>
-                  </div>
-                  <div className="border-b-[1px] border-[#E4BF4C] w-1/2 my-5"></div>
-                  <div className="paragraph font-light text-lg text-[#5F6367]">
-                    <p>Comienza un chat</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ContactChat stateContact={chatContact} nameContact={nameContact} />
           </section>
         </div>
       </div>
