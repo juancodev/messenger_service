@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import logoMessage from "../../assets/fondo-message.png";
 import contactIcon from "../../assets/contact.svg";
 import iconButton from "../../assets/Vector.svg";
