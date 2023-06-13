@@ -15,7 +15,7 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
   } else {
     return (
       <>
-        <div className="max-w-full max-h-full max-sm:px-9 max-sm:py-14 py-20 px-24 bg-[#5F636785]">
+        <div className="max-w-full max-h-full full-screen:max-h-full max-sm:px-9 max-sm:py-14 py-20 px-24 bg-[#5F636785]">
           <div className="max-h-full grid grid-cols-2 max-sm:grid-cols-1 max-sm:grid-rows-1 bg-white rounded-3xl">
             <div className="container-logo">
               <div className="max-sm:hidden">
@@ -28,15 +28,15 @@ const Layout = ({ children }: FormComponents): JSX.Element => {
               </div>
               <div className="flex flex-col items-center">{children}</div>
             </div>
-            <div className="container-img max-sm:w-full max-sm:h-1/2">
+            <div className="container-img max-sm:w-full max-sm:h-full">
               <img
                 src={imageOha}
                 alt="Image"
-                className="max-sm:h-full max-sm:w-full max-sm:object-cover xl:w-full"
+                className="max-sm:h-full max-sm:w-full max-sm:object-cover xl:w-full full-screen:w-full"
               />
             </div>
           </div>
-          <p className="absolute max-sm:hidden bottom-[12%] right-[52%] font-light text-base">
+          <p className="absolute max-lg:hidden full-screen:hidden bottom-[12%] right-[52%] font-light text-base">
             Terms & conditions
           </p>
         </div>

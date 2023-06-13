@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/oha_logo.svg";
 import contactIcon from "../../assets/contact.svg";
-import { useAuth } from "../../auth/AuthContext";
 import { ContactChat } from "../contactchat/ContactChat";
 const API = "https://api.chat.oha.services";
 const VERSION = "api/v1";
@@ -11,12 +10,11 @@ const UserProfile = () => {
   const [chatContact, setChatContact] = useState<boolean>(false);
   const [nameContact, setNameContact] = useState<object>({});
 
-  const auth = useAuth();
-  const { user } = auth;
+  const token = localStorage.getItem("token");
 
   const options = {
     headers: {
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
 

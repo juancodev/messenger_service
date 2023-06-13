@@ -85,9 +85,9 @@ const ContactChat = ({ stateContact, nameContact }: PropsStateContact) => {
               </div>
               {getMessages !== "" ? (
                 <>
-                  <div className="py-[19px] px-[19px] bg-[#11348F] rounded-l-lg rounded-br-3xl text-white mt-3.5 text-start w-[15%]">
-                    <p className="text-[15px] inline-block font-base">
-                      {getMessages[0]}
+                  <div className="text-white mt-3.5 text-start w-[15%]">
+                    <p className="bg-[#11348F] py-[19px] px-[19px] rounded-l-lg rounded-br-3xl text-[15px] inline-block font-base">
+                      {getMessages}
                     </p>
                   </div>
                   <div className="time-chat mt-1.5 text-start">
