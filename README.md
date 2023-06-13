@@ -14,7 +14,7 @@ Una vez ya instalada todas las denpendencias necesarias, puedes ejecutar el sigu
 
 👇👇
 
-### `npm run start`
+### `npm run dev`
 
 Iniciará la aplicación en modo de desarrollo [http://localhost:5173](http://localhost:5173).
 
