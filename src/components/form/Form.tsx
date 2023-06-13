@@ -5,14 +5,10 @@ import { useAuth } from "../../auth/AuthContext";
 const API = "https://api.chat.oha.services";
 const VERSION = "api/v1";
 
-type Props = {
-  props: string[] | string | boolean;
+interface PropsComponent {
   titleForm: string;
-  userCredential: boolean | string;
-  key: number;
-};
-
-type FormsParams = React.ReactElement<Props, string> & Props;
+  userCredential: boolean;
+}
 
 type FormValues = {
   fullName: string;
@@ -23,7 +19,7 @@ type FormValues = {
 
 type FormElement = FormEvent<HTMLFormElement>;
 
-const Form = (props: FormsParams) => {
+const Form = (props: PropsComponent) => {
   const [formValue, setFormValue] = useState<FormValues>({
     fullName: "",
     email: "",
